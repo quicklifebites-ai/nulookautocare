@@ -124,6 +124,11 @@
     // Reviews submit directly, using the same reliable FormSubmit flow as booking requests.
     // This intentionally leaves the website for FormSubmit's confirmation page after submission.
     reviewForm.removeAttribute('target');
+    const REVIEW_APP_URL='https://script.google.com/macros/s/AKfycbzw2DRjm5b0cdNhA6Ijq74ju2CV_e3SSA_33XoNRepkkHKKc_MP1s3ECuDkffrFHkpA/exec';
+    reviewForm.action=REVIEW_APP_URL;
+    function makeReviewCard(item){const card=document.createElement('article'),top=document.createElement('div'),stars=document.createElement('div'),text=document.createElement('p'),name=document.createElement('small'),rating=Math.max(1,Math.min(5,parseInt(item.rating,10)||5));card.className='review-card';stars.className='review-stars';stars.textContent='★'.repeat(rating)+'☆'.repeat(5-rating);text.textContent=item.review;name.textContent=item.name+' / Verified NULOOK client';top.append(stars,text);card.append(top,name);return card}
+    window.addEventListener('message',event=>{if(!['https://script.google.com','https://script.googleusercontent.com'].includes(event.origin)||!event.data||event.data.type!=='nulook-reviews'||!Array.isArray(event.data.reviews)||!event.data.reviews.length)return;const track=document.querySelector('.review-track'),cards=event.data.reviews.map(makeReviewCard);track.replaceChildren(...cards,...event.data.reviews.map(makeReviewCard))});
+    document.body.insertAdjacentHTML('beforeend','<iframe src="'+REVIEW_APP_URL+'?mode=reviews" title="NULOOK customer reviews" hidden></iframe>');
   </script>
 </body>
 </html>
