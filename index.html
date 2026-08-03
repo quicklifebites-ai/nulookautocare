@@ -121,6 +121,9 @@
     const protectionCard=document.querySelectorAll('.treatment')[1];protectionCard.style.backgroundImage='url("https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1000&q=90")';
     const gyeonProductImage='https://www.carcareproducts.com.au/cdn/shop/files/116126.jpg?v=1742434975&width=1000';whyPoints[1].style.backgroundImage=`url("${gyeonProductImage}")`;whyPoints[1].style.backgroundPosition='center';protectionCard.style.backgroundImage=`url("${gyeonProductImage}")`;protectionCard.style.backgroundPosition='center';
     document.querySelector('.details > div:first-child p').innerHTML='Mobile service across Brisbane<div class="location-list"><span><strong>📍</strong>Springfield</span><span><strong>📍</strong>Forest Lake</span><span><strong>📍</strong>Inala</span><span><strong>📍</strong>Ipswich</span><span><strong>📍</strong>North Lakes</span><span><strong>📍</strong>Logan</span><span><strong>📍</strong>Gold Coast</span></div><br>No additional travel cost - you only pay for the work.';
+    // Reviews submit directly, using the same reliable FormSubmit flow as booking requests.
+    // This intentionally leaves the website for FormSubmit's confirmation page after submission.
+    reviewForm.removeAttribute('target');
   </script>
 </body>
 </html>
