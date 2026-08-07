@@ -29,7 +29,7 @@
 </head>
 <body>
   <nav>
-    <a class="logo" href="#top" aria-label="NULOOK Auto Care"><img src="nulook-logo.png" alt="NULOOK Auto Care logo"></a>
+    <a class="logo" href="#top" aria-label="NULOOK Auto Care"><img src="assets/nulook-logo.jpeg" alt="NULOOK Auto Care logo"></a>
     <div class="links"><a href="#services">Services</a><a href="#packages">Packages</a><a href="#contact">Contact</a></div>
     <a class="nav-button booking-trigger" href="#booking">Book now</a>
   </nav>
@@ -105,8 +105,8 @@
     document.querySelector('#contact').insertAdjacentHTML('beforebegin','<section class="reviews" id="reviews"><div class="reviews-head"><div><div class="eyebrow">Customer reviews</div><h2>THE WORD<br>ON <span class="lime">NULOOK.</span></h2></div><div><p>We are building a collection of genuine customer feedback. Had a great experience? Share it with us - after review, it may be featured here.</p><button class="button review-button" id="open-review" type="button">Write a review</button></div></div><div class="review-track">'+reviewCards+reviewCards+'</div></section>');
     document.body.insertAdjacentHTML('beforeend','<div class="review-modal" id="review-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="review-title"><div class="review-box"><button class="close-modal" id="close-review" type="button" aria-label="Close review form">&times;</button><div class="eyebrow">Share your experience</div><h2 id="review-title">WRITE A<br>REVIEW.</h2><p>Thank you for choosing NULOOK. Your review is sent to our team for approval before it appears on the website.</p><form class="review-form" id="review-form" action="https://formsubmit.co/nulookautocareaustralia@gmail.com" method="POST" target="review-submit-target"><input type="hidden" name="_subject" value="New NULOOK customer review"><input type="hidden" name="request_type" value="Website review submission"><input type="hidden" name="_template" value="table"><input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"><label>First name<input name="name" autocomplete="given-name" required></label><label>Your rating<select name="rating" required><option value="" selected disabled>Select rating</option><option>5 stars</option><option>4 stars</option><option>3 stars</option><option>2 stars</option><option>1 star</option></select></label><label class="full">Email address<input name="email" type="email" autocomplete="email" required></label><label class="full">Your review<textarea name="review" placeholder="Tell future NULOOK clients about your experience." required></textarea></label><button class="button full" type="submit">Send my review</button></form><div class="review-success" id="review-success">Thank you for your review. It has been sent to the NULOOK team for approval.</div></div></div><iframe name="review-submit-target" title="Review submission" hidden></iframe>');
     const reviewModal=document.getElementById('review-modal'),reviewForm=document.getElementById('review-form'),reviewSuccess=document.getElementById('review-success');function closeReview(){reviewModal.classList.remove('active');reviewModal.setAttribute('aria-hidden','true')}document.getElementById('open-review').addEventListener('click',()=>{reviewModal.classList.add('active');reviewModal.setAttribute('aria-hidden','false');setTimeout(()=>reviewForm.elements.name.focus(),80)});document.getElementById('close-review').addEventListener('click',closeReview);reviewModal.addEventListener('click',event=>{if(event.target===reviewModal)closeReview()});reviewForm.addEventListener('submit',()=>{reviewForm.style.display='none';reviewSuccess.classList.add('show')});
-    const visualStyle=document.createElement('style');visualStyle.textContent='.logo{width:138px!important;height:72px!important;background:#050505;border:1px solid rgba(255,255,255,.15);padding:3px;box-shadow:0 0 28px rgba(41,153,255,.16)}.logo img{object-fit:contain!important;object-position:center!important}.hero-brand-mark{position:absolute;z-index:1;right:5.3vw;bottom:92px;width:min(27vw,340px);aspect-ratio:1;background:url("nulook-logo.png") center/contain no-repeat;mix-blend-mode:screen;opacity:.78;filter:drop-shadow(0 0 22px rgba(49,156,255,.25));pointer-events:none}.hero-copy{z-index:2!important}.why-point{position:relative;overflow:hidden;background-size:cover!important;background-position:center!important}.why-point:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,7,6,.92),rgba(7,7,6,.27))}.why-point>*{position:relative;z-index:1}.service{overflow:hidden}.service[data-service]{background-size:cover!important;background-position:center!important}.service[data-service]:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(13,11,7,.72),rgba(8,7,5,.9));pointer-events:none}.service[data-service]>*{position:relative;z-index:1}.package,.treatment,.step{position:relative;overflow:hidden;background-size:cover!important;background-position:center!important}.package:before,.treatment:before,.step:before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(10,9,7,.76),rgba(10,9,7,.94));pointer-events:none}.package>*,.treatment>*,.step>*{position:relative;z-index:1}.step{padding:26px 22px 25px!important;min-height:255px;background-color:#ebe6da}.step:before{background:linear-gradient(180deg,rgba(244,240,229,.48),rgba(244,240,229,.96))}.step p,.step h3,.step span{position:relative;z-index:1}@media(max-width:720px){.logo{width:110px!important;height:58px!important}.hero-brand-mark{width:180px;right:4vw;bottom:35px;opacity:.5}}';document.head.appendChild(visualStyle);
-    document.querySelector('.logo img').src='nulook-logo.png';document.querySelector('.logo img').alt='NULOOK Auto Care logo';document.querySelector('.hero').insertAdjacentHTML('afterbegin','<div class="hero-brand-mark" aria-hidden="true"></div>');
+    const visualStyle=document.createElement('style');visualStyle.textContent='.logo{width:138px!important;height:72px!important;background:#050505;border:1px solid rgba(255,255,255,.15);padding:3px;box-shadow:0 0 28px rgba(41,153,255,.16)}.logo img{object-fit:contain!important;object-position:center!important}.hero-brand-mark{position:absolute;z-index:1;right:5.3vw;bottom:92px;width:min(27vw,340px);aspect-ratio:1;background:url("assets/nulook-logo.png") center/contain no-repeat;mix-blend-mode:screen;opacity:.78;filter:drop-shadow(0 0 22px rgba(49,156,255,.25));pointer-events:none}.hero-copy{z-index:2!important}.why-point{position:relative;overflow:hidden;background-size:cover!important;background-position:center!important}.why-point:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,7,6,.92),rgba(7,7,6,.27))}.why-point>*{position:relative;z-index:1}.service{overflow:hidden}.service[data-service]{background-size:cover!important;background-position:center!important}.service[data-service]:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(13,11,7,.72),rgba(8,7,5,.9));pointer-events:none}.service[data-service]>*{position:relative;z-index:1}.package,.treatment,.step{position:relative;overflow:hidden;background-size:cover!important;background-position:center!important}.package:before,.treatment:before,.step:before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(10,9,7,.76),rgba(10,9,7,.94));pointer-events:none}.package>*,.treatment>*,.step>*{position:relative;z-index:1}.step{padding:26px 22px 25px!important;min-height:255px;background-color:#ebe6da}.step:before{background:linear-gradient(180deg,rgba(244,240,229,.48),rgba(244,240,229,.96))}.step p,.step h3,.step span{position:relative;z-index:1}@media(max-width:720px){.logo{width:110px!important;height:58px!important}.hero-brand-mark{width:180px;right:4vw;bottom:35px;opacity:.5}}';document.head.appendChild(visualStyle);
+    document.querySelector('.logo img').src='assets/nulook-logo.png';document.querySelector('.logo img').alt='NULOOK Auto Care logo';document.querySelector('.hero').insertAdjacentHTML('afterbegin','<div class="hero-brand-mark" aria-hidden="true"></div>');
     document.querySelector('nav .nav-button').textContent='Get a free quote';document.querySelector('.hero .button.booking-trigger').textContent='Get a free quote';document.querySelector('#contact .contact-copy .button').textContent='Get a free quote';document.querySelector('nav .links a[href="#services"]').setAttribute('href','services.html');
     const serviceVisuals={ceramic:'https://images.unsplash.com/photo-1607860108855-64acf2078ed0?auto=format&fit=crop&w=1000&q=85',detailing:'https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1000&q=85',correction:'https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=1000&q=85',wraps:'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1000&q=85',servicing:'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1000&q=85'};document.querySelectorAll('.service[data-service]').forEach(card=>card.style.backgroundImage=`url("${serviceVisuals[card.dataset.service]}")`);
     const whyImages=['https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1607860108855-64acf2078ed0?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=85','https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=85'];document.querySelectorAll('.why-point').forEach((point,index)=>point.style.backgroundImage=`url("${whyImages[index]}")`);
@@ -129,7 +129,69 @@
     const PUBLIC_REVIEWS_CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vSwfe09yzXGDylC-YTLYxPfjH6x0CdDSFf7C_yE__QOCWmsIY0bn7lPHpCwHX2h-J1eHFizhWcqYMy0/pub?gid=1150080135&single=true&output=csv';
     function parseCsv(text){const rows=[],row=[];let value='',quoted=false;for(let index=0;index<text.length;index++){const character=text[index],next=text[index+1];if(character==='"'&&quoted&&next==='"'){value+='"';index++}else if(character==='"'){quoted=!quoted}else if(character===','&&!quoted){row.push(value);value=''}else if((character==='\n'||character==='\r')&&!quoted){if(character==='\r'&&next==='\n')index++;row.push(value);if(row.some(cell=>cell!==''))rows.push(row.slice());row.length=0;value=''}else{value+=character}}row.push(value);if(row.some(cell=>cell!==''))rows.push(row);return rows}
     function makeReviewCard(item){const card=document.createElement('article'),top=document.createElement('div'),stars=document.createElement('div'),text=document.createElement('p'),name=document.createElement('small'),rating=Math.max(1,Math.min(5,parseInt(item.rating,10)||5));card.className='review-card';stars.className='review-stars';stars.textContent='★'.repeat(rating)+'☆'.repeat(5-rating);text.textContent=item.review;name.textContent=item.name+' / Verified NULOOK client';top.append(stars,text);card.append(top,name);return card}
-    fetch(PUBLIC_REVIEWS_CSV).then(response=>{if(!response.ok)throw new Error('Review feed unavailable');return response.text()}).then(csv=>{const rows=parseCsv(csv),headers=rows.shift().map(header=>header.trim().toLowerCase()),nameIndex=headers.indexOf('name'),ratingIndex=headers.indexOf('rating'),reviewIndex=headers.indexOf('review'),reviews=rows.map(row=>({name:row[nameIndex],rating:row[ratingIndex],review:row[reviewIndex]})).filter(item=>item.name&&item.review);if(!reviews.length)return;const track=document.querySelector('.review-track');track.replaceChildren(...reviews.map(makeReviewCard),...reviews.map(makeReviewCard))}).catch(()=>{});
+    fetch(PUBLIC_REVIEWS_CSV+'&refresh='+Date.now()).then(response=>{if(!response.ok)throw new Error('Review feed unavailable');return response.text()}).then(csv=>{const rows=parseCsv(csv),headers=rows.shift().map(header=>header.trim().toLowerCase()),nameIndex=headers.indexOf('name'),ratingIndex=headers.indexOf('rating'),reviewIndex=headers.indexOf('review'),reviews=rows.map(row=>({name:row[nameIndex],rating:row[ratingIndex],review:row[reviewIndex]})).filter(item=>item.name&&item.review);const track=document.querySelector('.review-track');if(!reviews.length){track.innerHTML='<article class="review-card"><div><div class="review-stars">★★★★★</div><p>Customer reviews are coming soon.</p></div><small>NULOOK AUTO CARE</small></article>';return}track.replaceChildren(...reviews.map(makeReviewCard),...reviews.map(makeReviewCard))}).catch(()=>{});
   </script>
+<script>
+  /* Optional customer review photos. Images are reduced in the browser before upload. */
+  (() => {
+    const form = document.getElementById('review-form');
+    if (!form) return;
+    const reviewField = form.querySelector('textarea[name="review"]');
+    const photoLabel = document.createElement('label');
+    photoLabel.className = 'full';
+    photoLabel.innerHTML = 'Add a photo <em>(optional)</em><input id="review-photo" type="file" accept="image/jpeg,image/png,image/webp"><small id="review-photo-note">JPG, PNG or WebP. Your image can be shown with your review.</small>';
+    const photoData = document.createElement('input');
+    photoData.type = 'hidden'; photoData.name = 'photo_data'; photoData.id = 'review-photo-data';
+    reviewField.closest('label').insertAdjacentElement('afterend', photoLabel);
+    photoLabel.insertAdjacentElement('afterend', photoData);
+
+    const style = document.createElement('style');
+    style.textContent = '.review-form label em{font-size:11px;font-style:normal;opacity:.7}.review-form label small{display:block;font-size:11px;line-height:1.35;opacity:.75;margin-top:7px}.review-photo{width:100%;height:142px;object-fit:cover;display:block;margin:13px 0 2px;border-radius:3px;border:1px solid rgba(224,176,60,.4)}';
+    document.head.appendChild(style);
+
+    async function compactImage(file) {
+      if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size > 8 * 1024 * 1024) throw new Error('Please choose a JPG, PNG or WebP image under 8 MB.');
+      const image = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      try {
+        await new Promise((resolve, reject) => { image.onload = resolve; image.onerror = reject; image.src = objectUrl; });
+        const scale = Math.min(1, 1280 / Math.max(image.width, image.height));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(image.width * scale); canvas.height = Math.round(image.height * scale);
+        canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+        return canvas.toDataURL('image/jpeg', .78);
+      } finally { URL.revokeObjectURL(objectUrl); }
+    }
+
+    form.addEventListener('submit', async event => {
+      const file = document.getElementById('review-photo').files[0];
+      if (!file || form.dataset.photoReady === 'yes') return;
+      event.preventDefault(); event.stopImmediatePropagation();
+      const submit = form.querySelector('button[type="submit"]');
+      try {
+        submit.disabled = true; submit.textContent = 'Preparing photo…';
+        photoData.value = await compactImage(file);
+        form.dataset.photoReady = 'yes';
+        form.submit();
+      } catch (error) {
+        alert(error.message || 'The image could not be prepared. Please try another photo.');
+        submit.disabled = false; submit.textContent = 'Send my review';
+      }
+    }, true);
+
+    const feed = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwfe09yzXGDylC-YTLYxPfjH6x0CdDSFf7C_yE__QOCWmsIY0bn7lPHpCwHX2h-J1eHFizhWcqYMy0/pub?gid=1150080135&single=true&output=csv';
+    const parse = text => { const rows=[], row=[]; let value='', quoted=false; for(let i=0;i<text.length;i++){ const c=text[i], n=text[i+1]; if(c==='"'&&quoted&&n==='"'){value+='"';i++}else if(c==='"'){quoted=!quoted}else if(c===','&&!quoted){row.push(value);value=''}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(value);if(row.some(v=>v!==''))rows.push(row.slice());row.length=0;value=''}else value+=c } row.push(value);if(row.some(v=>v!==''))rows.push(row);return rows };
+    const render = () => fetch(feed + '&photoRefresh=' + Date.now()).then(r => r.text()).then(csv => {
+      const rows = parse(csv), headings = rows.shift().map(h => h.trim().toLowerCase());
+      const name = headings.indexOf('name'), rating = headings.indexOf('rating'), review = headings.indexOf('review'), photo = headings.indexOf('photo url');
+      const reviews = rows.map(row => ({name:row[name], rating:row[rating], review:row[review], photo:photo < 0 ? '' : row[photo]})).filter(item => item.name && item.review);
+      if (!reviews.length) return;
+      const track = document.querySelector('.review-track');
+      const makeCard = item => { const card=document.createElement('article'), top=document.createElement('div'), stars=document.createElement('div'), text=document.createElement('p'), by=document.createElement('small'); card.className='review-card'; stars.className='review-stars'; stars.textContent='★'.repeat(Math.max(1,Math.min(5,parseInt(item.rating)||5)))+'☆'.repeat(5-Math.max(1,Math.min(5,parseInt(item.rating)||5))); if(item.photo){const image=document.createElement('img');image.className='review-photo';image.src=item.photo;image.alt='Customer vehicle shared with review';image.loading='lazy';top.append(image)} text.textContent=item.review;by.textContent=item.name+' / Verified NULOOK client';top.append(stars,text);card.append(top,by);return card };
+      track.replaceChildren(...reviews.map(makeCard), ...reviews.map(makeCard));
+    }).catch(() => {});
+    setTimeout(render, 400);
+  })();
+</script>
 </body>
-</html>
+</html>m
