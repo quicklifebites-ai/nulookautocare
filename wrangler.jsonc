@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "nulook-auto-care",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-14",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/review-moderate*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "REVIEWS_DB",
+      "database_name": "nulook-reviews",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "REVIEW_IMAGES",
+      "bucket_name": "nulook-review-images"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  },
+  "vars": {
+    "REVIEW_MODERATOR_EMAIL": "nulookautocareaustralia@gmail.com",
+    "REVIEW_FROM_EMAIL": "NuLook Reviews <reviews@YOUR_VERIFIED_DOMAIN>",
+    "PUBLIC_ORIGIN": "https://YOUR_WEBSITE_DOMAIN",
+    "TURNSTILE_SITE_KEY": "",
+    "EXPECTED_TURNSTILE_HOSTNAME": ""
+  }
+}

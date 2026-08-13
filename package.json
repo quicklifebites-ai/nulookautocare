@@ -1,0 +1,15 @@
+{
+  "name": "nulook-auto-care",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "check": "node --check worker/index.js && node --check script.js && node --check reviews.js",
+    "db:local": "wrangler d1 migrations apply nulook-reviews --local",
+    "db:remote": "wrangler d1 migrations apply nulook-reviews --remote",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
