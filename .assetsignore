@@ -1,0 +1,16 @@
+worker/
+migrations/
+qa/
+node_modules/
+.git/
+.gitignore
+.wrangler/
+.dev.vars
+wrangler.jsonc
+package.json
+package-lock.json
+README.md
+SETUP-REVIEWS.md
+IMAGE-PROMPTS.md
+verify-project.mjs
+*.zip

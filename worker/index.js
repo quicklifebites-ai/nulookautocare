@@ -8,6 +8,7 @@ const IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/hei
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const MAX_MULTIPART_BYTES = MAX_IMAGE_BYTES + 200_000;
 const MAX_MODERATION_BYTES = 16 * 1024;
+const MODERATION_CONTENT_TYPE = /^application\/x-www-form-urlencoded(?:\s*;\s*charset\s*=\s*(?:utf-8|"utf-8"))?\s*$/i;
 const MAX_REVIEW_LENGTH = 1200;
 const TOKEN_TTL_SECONDS = 30 * 24 * 60 * 60;
 const MODERATOR_EMAIL = "nulookautocareaustralia@gmail.com";
@@ -376,8 +377,22 @@ async function moderateReview(request, env, url) {
   }
 
   const contentType = request.headers.get("content-type") || "";
-  if (!/^(?:application\/x-www-form-urlencoded|multipart\/form-data)(?:;|$)/i.test(contentType)) {
+  if (!MODERATION_CONTENT_TYPE.test(contentType)) {
     return moderationPage("This moderation request is not valid.", "No change was made.", false, 415);
+  }
+
+  const declaredLengthHeader = request.headers.get("content-length");
+  if (declaredLengthHeader !== null) {
+    if (!/^\d+$/.test(declaredLengthHeader)) {
+      return moderationPage("This moderation request is not valid.", "No change was made.", false, 400);
+    }
+    const declaredLength = Number(declaredLengthHeader);
+    if (!Number.isSafeInteger(declaredLength) || declaredLength > MAX_MODERATION_BYTES) {
+      return moderationPage("This moderation request is too large.", "No change was made.", false, 413);
+    }
+  }
+  if (!request.body) {
+    return moderationPage("This moderation request is not valid.", "No change was made.", false, 400);
   }
 
   await ensureSchema(env.REVIEWS_DB);
@@ -388,7 +403,7 @@ async function moderateReview(request, env, url) {
     if (error?.name === "PayloadTooLargeError") {
       return moderationPage("This moderation request is too large.", "No change was made.", false, 413);
     }
-    throw error;
+    return moderationPage("This moderation request is not valid.", "No change was made.", false, 400);
   }
   const link = {
     id: clean(data.get("id")),
@@ -774,7 +789,7 @@ async function readFormDataWithLimit(request, maximumBytes) {
     received += value.byteLength;
     if (received > maximumBytes) {
       await reader.cancel().catch(() => {});
-      const error = new Error("Multipart payload exceeds the configured limit");
+      const error = new Error("Form payload exceeds the configured limit");
       error.name = "PayloadTooLargeError";
       throw error;
     }
