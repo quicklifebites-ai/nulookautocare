@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "check": "node --check worker/index.js && node --check script.js && node --check reviews.js",
-    "db:local": "wrangler d1 migrations apply nulook-reviews --local",
-    "db:remote": "wrangler d1 migrations apply nulook-reviews --remote",
-    "deploy": "wrangler deploy"
+    "verify": "node verify-project.mjs",
+    "test:worker": "node qa/worker-smoke.mjs",
+    "check": "node --check worker/index.js && node --check script.js && node --check reviews.js && node verify-project.mjs && node qa/worker-smoke.mjs",
+    "db:local": "wrangler d1 migrations apply REVIEWS_DB --local",
+    "db:remote": "wrangler d1 migrations apply REVIEWS_DB --remote",
+    "deploy": "npm run check && wrangler deploy && wrangler d1 migrations apply REVIEWS_DB --remote"
   },
   "devDependencies": {
-    "wrangler": "^4.0.0"
+    "wrangler": "^4.68.0"
   }
 }

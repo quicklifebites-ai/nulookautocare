@@ -1,38 +1,62 @@
 # NuLook Auto Care website
 
-A lightweight, responsive static website built with HTML, CSS and JavaScript. No frameworks, external fonts or remote image dependencies are used.
+This repository is the complete NuLook Auto Care website: responsive static pages, nine self-hosted WebP car images, and a Cloudflare Worker that provides approved public reviews, private photo storage and email moderation.
 
-## Run locally
+## Repository layout
 
-Open `index.html` directly in a browser, or serve the folder with any static server. For example:
+Keep this layout at the GitHub repository root. Do not upload only `index.html`.
 
-```powershell
-cd C:\Users\sahil\Documents\Codex\2026-08-14\ai\work\nulook-site
-python -m http.server 8080
+```text
+/
+|-- index.html
+|-- styles.css
+|-- reviews.css
+|-- script.js
+|-- reviews.js
+|-- favicon.svg
+|-- assets/
+|   `-- car-*.webp
+|-- worker/
+|   `-- index.js
+|-- migrations/
+|-- wrangler.jsonc
+`-- package.json
 ```
 
-Then visit `http://localhost:8080`.
+All browser assets use portable `./...` URLs, so they work from a GitHub repository root and from a Cloudflare custom domain. The review API intentionally uses same-origin `/api/...` routes.
 
-## Image files
+## Correct Cloudflare deployment
 
-The hero slideshow expects these local files:
+GitHub is the source repository. Cloudflare **Workers Builds** must deploy the whole repository as one Worker with Static Assets. This is not a separate GitHub Pages or Cloudflare Pages static site: those products do not execute `worker/index.js`, so `/api/reviews` would return 404.
 
-- `assets/car-01.webp`
-- `assets/car-02.webp`
-- `assets/car-03.webp`
-- `assets/car-04.webp`
-- `assets/car-05.webp`
+For the existing Cloudflare Worker, connect this repository under **Settings -> Builds**. Use:
 
-For best results, export landscape WebP images at 2000 × 1200 pixels or larger, keep each file under roughly 500 KB, and leave some uncluttered space on the left for the hero copy. The slideshow advances every four seconds.
+- Root directory: `/`
+- Deploy command: `npx wrangler deploy` (the Cloudflare default)
+- Production branch: your GitHub default branch, normally `main`
 
-The included images were created for this rebuild with the built-in image-generation workflow. See `IMAGE-PROMPTS.md` for the final prompt set.
+The Worker name must be `nulook-auto-care`, matching `wrangler.jsonc`. No values in the source files need to be replaced. Current Wrangler automatically provisions the D1 and R2 bindings on deployment, and the Worker creates any missing review tables on its first API request.
 
-## Contact form
+See `SETUP-REVIEWS.md` for the moderation workflow and optional email/spam-protection upgrades.
 
-The form submits to FormSubmit using `nulookautocareaustralia@gmail.com`. FormSubmit may send a one-time activation email the first time the form is used. Visitors can also use the visible direct email link if form submission is unavailable.
+## Local checks
 
-## Reviews and moderation
+After Node.js is installed:
 
-The site now includes a public approved-reviews section, an accessible 1–5 star review form, and optional customer photo upload. Pending reviews are never returned by the public API. The owner receives private approve/deny links at `nulookautocareaustralia@gmail.com`, with a confirmation step before either decision is applied.
+```powershell
+npm install
+npm run check
+npm run dev
+```
 
-See `SETUP-REVIEWS.md` to connect Cloudflare D1, private R2 storage, Cloudflare Images, and the moderation email service. The static localhost preview cannot persist or moderate real reviews until this backend setup is completed.
+`npm run check` validates JavaScript syntax, exact path casing, required files, all WebP files and the absence of deployment placeholders.
+
+For a static-only visual preview, serve this folder with any local HTTP server. A static preview can show the review interface but cannot execute the Cloudflare API.
+
+## Images
+
+The slideshow uses `assets/car-01.webp` through `assets/car-09-hyundai-i30.webp` and advances every four seconds. The added Australian-market selection includes Toyota Camry, Mazda CX-5, Ford Ranger and Hyundai i30-style everyday vehicles. All images are local; the live page has no remote image dependency. Generation details and prompts are recorded in `IMAGE-PROMPTS.md`.
+
+## Contact email
+
+Website enquiries and review moderation go to `nulookautocareaustralia@gmail.com`. The contact form and the zero-secret moderation fallback use FormSubmit. FormSubmit may send a one-time activation message to that mailbox if the address has not already been activated.

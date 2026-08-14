@@ -53,6 +53,7 @@
     const pauseIcon = slider.querySelector('[data-pause-icon]');
     const pauseLabel = slider.querySelector('[data-pause-label]');
     const status = slider.querySelector('[data-status]');
+    const visibleStatus = slider.querySelector('[data-visible-status]');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const interval = 4000;
     let activeIndex = 0;
@@ -83,6 +84,7 @@
       });
 
       if (announce && status) status.textContent = `Image ${activeIndex + 1} of ${slides.length}`;
+      if (visibleStatus) visibleStatus.textContent = `${activeIndex + 1} / ${slides.length}`;
       prepareImage(activeIndex + 1);
     };
 

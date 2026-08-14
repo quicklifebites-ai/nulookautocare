@@ -482,6 +482,17 @@ button {
   gap: 0;
 }
 
+.slider-count {
+  display: none;
+  min-width: 58px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
 .slider-dots button {
   position: relative;
   width: 28px;
@@ -1192,6 +1203,14 @@ button {
 
   .slider-pause [data-pause-label] {
     display: none;
+  }
+
+  .slider-dots {
+    display: none;
+  }
+
+  .slider-count {
+    display: inline-block;
   }
 
   .slider-pause {
