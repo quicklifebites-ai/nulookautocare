@@ -9,6 +9,11 @@ node_modules/
 wrangler.jsonc
 package.json
 package-lock.json
+bun.lock
+bun.lockb
+pnpm-lock.yaml
+yarn.lock
+npm-shrinkwrap.json
 README.md
 SETUP-REVIEWS.md
 IMAGE-PROMPTS.md
