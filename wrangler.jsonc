@@ -12,6 +12,8 @@
   "d1_databases": [
     {
       "binding": "REVIEWS_DB",
+      "database_name": "nulook-auto-care-reviews-db",
+      "database_id": "ce27069b-dde3-4730-8873-f8b341f3c06d",
       "migrations_dir": "migrations"
     }
   ],
